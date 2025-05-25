@@ -3,13 +3,12 @@
 
 html { 
   scroll-behavior: smooth;
-    font-family: "Raleway", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 body { 
   @apply bg-zinc-900 text-zinc-50 h-[200vh]
 }
-
 
 /* Typography */
 .headline-1 { 

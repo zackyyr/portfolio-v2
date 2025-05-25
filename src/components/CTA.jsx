@@ -2,7 +2,7 @@ import React from "react";
 
 const CTA = () => {
   return (
-    <section className="text-center py-24 px-6 text-white">
+    <section id="contact" className="text-center py-24 px-6 text-white">
       <div className="inline-block bg-black text-white text-sm font-medium px-4 py-1 rounded-full mb-4">
         Contact
       </div>

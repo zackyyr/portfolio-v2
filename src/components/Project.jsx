@@ -41,7 +41,7 @@ const projects = [
 
 const Project = () => {
   return (
-    <section className="py-16 px-4 md:px-8 lg:px-16 max-w-6xl mx-auto">
+    <section id='project' className="py-16 px-4 md:px-8 lg:px-16 max-w-6xl mx-auto">
       <div className="text-center mb-12">
         <span className="text-sm font-medium bg-black text-white py-1 px-3 rounded-full">
           Projects

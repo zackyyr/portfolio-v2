@@ -1,5 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import { gsap } from 'gsap';
+
+gsap.registerPlugin(ScrollSmoother);
 
 const Navbar = ({ navOpen }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -41,9 +45,21 @@ const Navbar = ({ navOpen }) => {
   const navItems = [
     { label: 'Home', link: '#home' },
     { label: 'About', link: '#about' },
+    { label: 'Skill', link: '#skills' },
     { label: 'Project', link: '#project' },
-    { label: 'Certificates', link: '#certificates' }
   ];
+
+  const handleNavClick = (e, link, index) => {
+    e.preventDefault();
+    setActiveIndex(index);
+
+    const target = document.querySelector(link);
+    const smoother = ScrollSmoother.get();
+
+    if (target && smoother) {
+      smoother.scrollTo(target, true); // true = smooth
+    }
+  };
 
   return (
     <nav className={`navbar ${navOpen ? 'active' : ''}`}>
@@ -53,25 +69,31 @@ const Navbar = ({ navOpen }) => {
           key={label}
           ref={(el) => (linkRefs.current[i] = el)}
           className={`nav-link ${i === activeIndex ? 'active' : ''} ${className || ''}`}
-          onClick={() => setActiveIndex(i)}
+          onClick={(e) => handleNavClick(e, link, i)}
         >
           {label}
         </a>
       ))}
 
-      {/* Contact hanya tampil di mobile, tanpa active dan tanpa setActiveIndex */}
+      {/* Contact hanya tampil di mobile */}
       {isMobile && (
         <a
           href="#contact"
-          className="nav-link" // tanpa 'active' class
+          className="nav-link"
           onClick={(e) => {
+            e.preventDefault();
+            const target = document.querySelector('#contact');
+            const smoother = ScrollSmoother.get();
+            if (target && smoother) {
+              smoother.scrollTo(target, true);
+            }
           }}
         >
           Contact
         </a>
       )}
 
-      {/* highlight box (desktop only) */}
+      {/* Highlight box */}
       {!isMobile && <div className="active-box" ref={activeBox} />}
     </nav>
   );

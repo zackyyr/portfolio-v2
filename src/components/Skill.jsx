@@ -24,7 +24,7 @@ const skills = [
 
 const Skill = () => {
   return (
-    <section className="max-w-[67rem] mx-auto px-4 py-16">
+    <section id='skills' className="max-w-[67rem] mx-auto px-4 py-16">
       <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-white to-zinc-900 bg-clip-text text-transparent">
         Solving Problems with the Right Stack
       </h2>
